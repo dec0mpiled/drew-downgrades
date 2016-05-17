@@ -10,6 +10,15 @@ var users = require('./routes/users');
 
 var app = express();
 
+// Mongoose
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://drew:welcometor4ge@ds023480.mlab.com:23480/drewdowngrades');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("SUCCESS: Connected to DREWDOWNGRADES");
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
